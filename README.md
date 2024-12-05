@@ -1,1 +1,2 @@
-# Yelpcamp
+## 💫 Overview 
+YelpCamp is a full-stack web application built for educational purposes, specifically to demonstrate the development of a real-world application using Node.js, Express.js, and MongoDB. This project allows users to create profiles, add and review campgrounds, and share photos of their adventures. With a user-friendly interface and robust features, YelpCamp serves as a learning tool for web development concepts and technologies.
