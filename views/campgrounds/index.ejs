@@ -1,19 +1,45 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Campgrounds</title>
-</head>
-<body>
+    <% layout('layouts/boilerplate') %>
     <h1>All Campgrounds</h1>
     <div>
         <a href="/campgrounds/new">Add Campground</a>
     </div>
     <ul>
         <% for(let campground of campgrounds) {%>
-                <li><%=campground.title%> <a href="/campgrounds/<%=campground._id%>">Details</a></li>
+                <div class="card mb-3">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="fit"><img class="img-fluid" src="<%=campground.image%>" alt=""></div>
+                        </div>
+                        <div class="col-md-8 px-5">
+                            <div class="card-body">
+                                <h5 class="card-title"><%= campground.title %></h5>
+                                <p class="card-text"><%= campground.description %></p>
+                                <p class="text-secondary"><%= campground.location %></p>
+                                <a href="/campgrounds/<%=campground._id%>" class="btn btn-primary">View <%= campground.title %></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
         <% } %>
     </ul>
-</body>
-</html>
+
+
+    <style>
+        .fit{
+            height: 250px;
+            width: 350px;
+        }
+        img{
+            width: 100% !important;
+            height: 100% !important;
+            object-fit: cover;
+        }
+        @media (max-width: 500px){
+            .card-body{
+                text-align: center;
+            }
+            .card{
+                width: 350px;
+            }
+        }
+    </style>
