@@ -4,6 +4,7 @@ const app = express()
 const mongoose = require('mongoose')
 const methodOverride = require('method-override')
 const Campground = require('./models/campground')
+const ejsMate = require('ejs-mate')
 
 mongoose.connect('mongodb://127.0.0.1:27017/yelpcamp')
 .then(() => {
@@ -13,6 +14,8 @@ mongoose.connect('mongodb://127.0.0.1:27017/yelpcamp')
     console.log('MONGODB CONNECTION ERROR')
     console.log(err)
 })
+
+app.engine('ejs', ejsMate)
 
 app.use(express.urlencoded({extended: true}))
 app.use(methodOverride('_method'))
