@@ -16,6 +16,22 @@
             <a class="nav-link" href="/campgrounds/new">New Campground</a>
           </li>
         </ul>
+
+        <!-- Right side -->
+        <ul class="navbar-nav right">
+          <% if(!currentUser) { %>
+          <li class="nav-item">
+            <a class="nav-link" href="/login">Login</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/register">Register</a>
+          </li>
+          <% } else {%>
+          <li class="nav-item">
+            <a class="nav-link" href="/logout">Logout</a>
+          </li>
+          <% } %>
+        </ul>
       </div>
     </div>
 </nav>
@@ -26,5 +42,8 @@
     top: 0;
     width: 100%;
     z-index: 1000; /* Ensure the navbar is above other content */
-}
+  }
+  .right{
+    margin-left: auto;
+  }
 </style>
