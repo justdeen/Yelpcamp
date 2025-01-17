@@ -13,6 +13,7 @@ const flash = require('connect-flash')
 const passport = require('passport')
 const LocalStrategy = require('passport-local')
 const User = require('./models/user')
+const Campground = require('./models/campground')
 
 mongoose.connect('mongodb://127.0.0.1:27017/yelpcamp')
 .then(() => {
@@ -52,13 +53,17 @@ passport.deserializeUser(User.deserializeUser());
 
 app.use(flash());
 app.use((req, res, next) => {
-    // console.log('REQ.USER...', req.user);
     res.locals.currentUser = req.user
     res.locals.success = req.flash('success')
     res.locals.error = req.flash('error')
     next();
 })
 
+app.get('/test', async (req, res) => {
+    await Campground.updateMany({}, {$set: {author: '67889d752865165e00961061'}})
+    const all = await Campground.find({})
+    res.send(all)
+})
 
 app.use('/', userRoutes)
 app.use('/campgrounds', campgroundsRoutes)
